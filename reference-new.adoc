@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: reference-new.html 
+keywords: new features, release notes, enhancements 
+summary: O Cloud Volumes ONTAP 9.10.0 inclui vários novos recursos e aprimoramentos. 
+---
+= Novidades do Cloud Volumes ONTAP 9.10.0
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+O Cloud Volumes ONTAP 9.10.0 inclui vários novos recursos e aprimoramentos.
+
+Recursos e aprimoramentos adicionais também são introduzidos nas versões mais recentes do BlueXP . Consulte https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/whats-new.html["Notas de versão do BlueXP"^] para obter detalhes.
+
+
+
+== 9.10.0 GA (4 out 2021)
+
+A versão 9.10.0 GA está disponível na AWS, Azure e Google Cloud. Esta versão inclui os seguintes novos recursos e aprimoramentos.
+
+
+
+=== Melhor desempenho de gravação
+
+Melhoramos o desempenho de gravação do Cloud Volumes ONTAP quando a alta velocidade de gravação está ativada.
+
+
+
+=== Aumento do tamanho do disco NVRAM no Azure
+
+O tamanho do disco NVRAM foi aumentado de 128 GiB para 512 GiB para novos sistemas Cloud Volumes ONTAP no Azure.
+
+
+NOTE: Se você escolher um sistema de nó único e a máquina virtual suportar SSDs Ultra, o sistema usará um SSD Ultra de 32 GiB para NVRAM, em vez de um SSD premium de 512 GiB.
+
+
+
+== Versão necessária do conetor BlueXP
+
+O conetor BlueXP  deve estar executando a versão 3.9.11 ou posterior para implantar novos sistemas Cloud Volumes ONTAP 9.10.0 e atualizar os sistemas existentes para o 9.10.0.
+
+
+
+== Notas de atualização
+
+* As atualizações do Cloud Volumes ONTAP devem ser concluídas a partir do BlueXP . Você não deve atualizar o Cloud Volumes ONTAP usando o Gerenciador de sistema ou a CLI. Isso pode afetar a estabilidade do sistema.
+* Você pode atualizar para o Cloud Volumes ONTAP 9.10.0 a partir da versão 9.9.1. O BlueXP  solicitará que você atualize seus sistemas Cloud Volumes ONTAP 9.9.1 existentes para a versão 9.10.0.
++
+http://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-cloud.html["Saiba como atualizar quando o BlueXP  o notificar"^].
+
+* A atualização de um sistema de nó único leva o sistema off-line por até 25 minutos, durante os quais a e/S é interrompida.
+* A atualização de um par de HA não causa interrupções e e/S é ininterrupta. Durante esse processo de atualização sem interrupções, cada nó é atualizado em conjunto para continuar fornecendo e/S aos clientes.
+* Na AWS, os tipos de instância C4, M4 e R4 EC2 não são mais compatíveis com novas implantações do Cloud Volumes ONTAP. Se você tiver um sistema existente que esteja sendo executado em um tipo de instância C4, M4 ou R4, será necessário alterar para um tipo de instância na família de instâncias C5, M5 ou R5. Se você não puder alterar o tipo de instância, será necessário habilitar a rede aprimorada antes de atualizar.
++
+link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-updating-ontap-cloud.html#upgrades-in-aws-with-c4-m4-and-r4-ec2-instance-types["Saiba como atualizar na AWS com os tipos de instância C4, M4 e R4 EC2"^]. link:https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-change-ec2-instance.html["Saiba como alterar o tipo de instância EC2 para Cloud Volumes ONTAP"^].
+
++
+link:https://mysupport.netapp.com/info/communications/ECMLP2880231.html["Suporte à NetApp"^]Consulte para saber mais sobre o fim da disponibilidade e suporte para esses tipos de instância.
+
+
+
+
+
+=== DS3_v2
+
+A partir da versão 9.9.1, o tipo de VM DS3_v2 não é mais compatível com sistemas Cloud Volumes ONTAP novos e existentes. Se você tiver um sistema existente em execução nesse tipo de VM, será necessário alterar os tipos de VM antes de atualizar para o 9.10.0.
